@@ -55,52 +55,26 @@ double distance(ll x1,ll y1,ll x2,ll y2)
 	return sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
 }
 
+
 void solution()
 {
-	    ll n,el;
-	    cin>>n>>el;
-	    vi v(n);
-	    for(auto &x:v)
-	    	cin>>x;
-	    ll low=0,high=n-1;
-	    ll res=-1;
-	    while(low<=high)
-	    {
-	    	ll mid=low+(high-low)/2;
-	    	if(v[mid]==el)
-	    	{
-	    		res=mid;
-	    		high=mid-1;
-	    	}
-	    	else if(v[mid]>el)
-	    	{
-	    		high=mid-1;
-	    	}
-	    	else
-	    		low=mid+1;
-	    	
-	    }
-	    cout<<"First occurrence is at "<<res+1<<" position"<<endl;
-	    
-	    high=n-1,low=0;
-	     while(low<=high)
-	    {
-	    	ll mid=low+(high-low)/2;
-	    	if(v[mid]==el)
-	    	{
-	    		res=mid;
-	    		low=mid+1;
-	    	}
-	    	else if(v[mid]>el)
-	    	{
-	    		high=mid-1;
-	    	}
-	    	else
-	    		low=mid+1;
-	    	
-	    }
-	    cout<<"Last occurrence is at "<<res+1<<" position";
-	    
+	int n,p;
+	cin>>n>>p;
+	vi v(n);
+	for(auto &x:v)  cin>>x;
+	ll sum=0;
+	ll cnt=0;
+	mii m;
+	for(auto u:v)
+	{
+		sum+=u;
+		if(sum==p)
+			cnt++;
+		else if(m[sum-p])
+			cnt++;
+		m[sum]++;
+	}
+	cout<<cnt<<endl;
 	    
 }
  
@@ -108,7 +82,7 @@ void solution()
 int main()
 {
  
-   test
+  test
    {
        solution();
    }
