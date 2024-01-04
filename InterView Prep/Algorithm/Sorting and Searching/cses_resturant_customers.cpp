@@ -54,34 +54,38 @@ double distance(ll x1,ll y1,ll x2,ll y2)
 {
 	return sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
 }
+bool cmp(pair<ll,ll> &a,pair<ll,ll> &b)
+{
+	return (a.S<b.S);
+}
 
 
 void solution()
 {
 	ll n;
+	vii v;
 	cin>>n;
-	vi v(n);
-	ll l=0,r=0;
-	for(auto &x:v) cin>>x;
- 	mii vis;
-	ll mx=INT_MIN;
-	while(r<n)
+	forn(i,n)
 	{
-		if(vis[v[r]])
-		{
-			while(vis[v[r]])
-				{
-					vis[v[l]]=false;
-					l++;
-				}
-			
-		}
-		mx=max(mx,r-l+1);
-		vis[v[r]]=true;
-		r++;
-		
+	   ll start,end;
+	   cin>>start>>end;
+	   v.pb({start,1});
+	   v.pb({end,-1});
+	}
+	srt(v);
+	ll mx=0;
+	ll cnt=0;
+	// for(auto u:v) cout<<u.F<<" "<<u.S<<endl;
+	// cout<<endl;
+	// cout<<endl;
+	forn(i,2*n)
+	{
+		cnt+=v[i].S;
+		mx=max(mx,cnt);
+		// cout<<v[i].F<<" "<<v[i].S<<" "<<mx<<endl;
 	}
 	cout<<mx<<endl;
+	
 	
 	
 } 

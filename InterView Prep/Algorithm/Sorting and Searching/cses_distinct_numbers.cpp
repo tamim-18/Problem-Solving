@@ -59,29 +59,15 @@ double distance(ll x1,ll y1,ll x2,ll y2)
 void solution()
 {
 	ll n;
+	mii m;
 	cin>>n;
-	vi v(n);
-	ll l=0,r=0;
-	for(auto &x:v) cin>>x;
- 	mii vis;
-	ll mx=INT_MIN;
-	while(r<n)
+	while(n--)
 	{
-		if(vis[v[r]])
-		{
-			while(vis[v[r]])
-				{
-					vis[v[l]]=false;
-					l++;
-				}
-			
-		}
-		mx=max(mx,r-l+1);
-		vis[v[r]]=true;
-		r++;
-		
+		ll x;
+		cin>>x;
+		m[x]++;
 	}
-	cout<<mx<<endl;
+	cout<<m.size()<<endl;
 	
 	
 } 
