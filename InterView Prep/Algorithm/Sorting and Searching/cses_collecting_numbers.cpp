@@ -60,21 +60,41 @@ void solution()
 {
 	ll n;
 	cin>>n;
-	ll cnt=0;
-	rep(i,1,n)
+	vii v;
+	forn(i,n)
 	{
-		ll x;
-		cin>>x;
-		if(i>x) cnt++;
+		ll x,y;
+		cin>>x>>y;
+		v.pb({x,y});
 	}
-	cout<<cnt+1<<endl;
+	ll mx=INT_MIN;
+	ll mn=INT_MAX;
+	for(auto u:v)
+	{
+		if(u.F==1) mx=max(mx,u.S);
+		else if(u.F==2) 
+		{
+			
+			mn=min(mn,u.S);
+			}
+	}
+	ll ans=mn-mx+1;
+	for(auto u:v)
+	{
+		if(u.F==3)
+		{
+			if(u.S>=mx and u.S<=mn) ans--;
+		} 
+	}
+	cout<<ans<<endl;
+	
 	
 } 
  
 int main()
 {
  
-   //test
+   test
    {
        solution();
    }
