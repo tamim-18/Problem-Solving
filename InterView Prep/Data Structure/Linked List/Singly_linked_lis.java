@@ -88,6 +88,34 @@ class LinkedList{
         }
         return cnt;
     }
+    void ultaLinkedlist()
+    {
+        if (head == null) {
+            System.out.println("Linked list is empty. Cannot reverse.");
+            return;
+        }
+        Node current=head;
+        Node next=null;
+        Node prev=null;
+        while(current!=null)
+        {
+            next=current.next;
+            current.next=prev;
+            prev=current;
+            current=next;
+        }
+        head=prev;
+    }
+    void deleteBegin(){
+        if(head==null) {
+            System.out.println("The linked list is empty");
+            return;
+        }
+        Node temp=head;
+        head=head.next;
+        temp.next=null;
+
+    }
 
 
 
@@ -104,7 +132,9 @@ public static void main(String[] args){
         System.out.println("5. Display linked list");
         System.out.println("6. Search in the linked list");
         System.out.println("7. Disply the length of the Linkedlist");
-        System.out.println("8. Exit");
+        System.out.println("8. Reverse the Linked List");
+        System.out.println("9. Delete from the beginning");
+        System.out.println("10. Exit");
 
         choice = scanner.nextInt();
 
@@ -142,14 +172,20 @@ public static void main(String[] args){
             case 7:
                 System.out.println("The length of linked list is: "+linkedList.length());
                 break;
-            
             case 8:
+                linkedList.ultaLinkedlist();
+                break;
+            case 9:
+                linkedList.deleteBegin();
+                break;
+            case 10:
                 System.out.println("Exiting the program.");
                 break;
+                
             default:
                 System.out.println("Invalid choice. Please enter a valid option.");
         }
-    } while (choice != 8);
+    } while (choice != 10);
 
 
 
