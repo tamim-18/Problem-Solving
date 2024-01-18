@@ -60,12 +60,33 @@ class LinkedList{
         while(temp!=null)
         {
             System.out.print(temp.data+" ");
-            
+
             temp=temp.next;
         }
         System.out.println();
         System.out.println("................");
 
+    }
+    boolean searchTheKhoj(int data)
+    {
+        Node temp=head;
+        while(temp!=null)
+        {
+            if(temp.data==data) return true;
+            temp=temp.next;
+        }
+        return false;
+    }
+    int length()
+    {
+        Node temp=head;
+        int cnt=0;
+        while(temp!=null)
+        {
+            cnt++;
+            temp=temp.next;
+        }
+        return cnt;
     }
 
 
@@ -81,7 +102,10 @@ public static void main(String[] args){
         System.out.println("3. Insert after a node");
         System.out.println("4. Insert at the end");
         System.out.println("5. Display linked list");
-        System.out.println("6. Exit");
+        System.out.println("6. Search in the linked list");
+        System.out.println("7. Disply the length of the Linkedlist");
+        System.out.println("8. Exit");
+
         choice = scanner.nextInt();
 
         switch (choice) {
@@ -109,12 +133,23 @@ public static void main(String[] args){
                 linkedList.displayLinkedList();
                 break;
             case 6:
+                System.out.println("Enter the data to be searched:");
+                int data = scanner.nextInt();
+                if(linkedList.searchTheKhoj(data))
+                    System.out.println(data+" is found");
+                else System.out.println(data+" is found not found");
+                break;
+            case 7:
+                System.out.println("The length of linked list is: "+linkedList.length());
+                break;
+            
+            case 8:
                 System.out.println("Exiting the program.");
                 break;
             default:
                 System.out.println("Invalid choice. Please enter a valid option.");
         }
-    } while (choice != 6);
+    } while (choice != 8);
 
 
 
