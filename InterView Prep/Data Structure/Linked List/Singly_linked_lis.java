@@ -116,6 +116,56 @@ class LinkedList{
         temp.next=null;
 
     }
+    void deleteEnd(){
+        //if the linked list is empty
+        if(head==null) {
+            System.out.println("The linked list is empty");
+            return;
+        }
+        //check the linked list has only one element
+        if(head.next==null)
+        {
+            head=null;
+            return;
+        }
+        Node secondLast=head;
+        while(secondLast.next.next!=null)
+        {
+            secondLast=secondLast.next;
+        }
+        secondLast.next=null;
+        System.out.println("Node is deleted from the end");
+        
+    }
+    void deleteAnyPosition(int pos){
+        //position is 0 indexed
+        if(head==null) 
+        {
+            System.out.println("Linked list is empty. Can not be deleted");
+            return;
+        }
+        if(pos==0)
+        {
+            head=head.next;
+            System.out.println("Node is deleted");
+            return;
+        }
+        Node current=head;
+        Node prev=null;
+        int currPos=0;
+        while(current!=null && currPos!=pos){
+            prev=current;
+            current=current.next;
+            currPos++;
+        }
+        if(current==null){
+            System.out.println("Invalid position");
+            return;
+        }
+        prev.next=current.next;
+        System.out.println("Node deleted");
+
+    }
 
 
 
@@ -134,7 +184,10 @@ public static void main(String[] args){
         System.out.println("7. Disply the length of the Linkedlist");
         System.out.println("8. Reverse the Linked List");
         System.out.println("9. Delete from the beginning");
-        System.out.println("10. Exit");
+        System.out.println("10. Delete from the end");
+        System.out.println("11. Delete fom any position");
+
+        System.out.println("12. Exit");
 
         choice = scanner.nextInt();
 
@@ -179,13 +232,21 @@ public static void main(String[] args){
                 linkedList.deleteBegin();
                 break;
             case 10:
+                linkedList.deleteEnd();
+                break;
+            case 11:
+                System.out.println("Enter the position to be deleted:");
+                int pos = scanner.nextInt();
+                linkedList.deleteAnyPosition(pos);
+                break;
+            case 12:
                 System.out.println("Exiting the program.");
                 break;
                 
             default:
                 System.out.println("Invalid choice. Please enter a valid option.");
         }
-    } while (choice != 10);
+    } while (choice != 12);
 
 
 
