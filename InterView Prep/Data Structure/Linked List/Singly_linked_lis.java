@@ -210,6 +210,37 @@ class LinkedList{
         }
         System.out.println("Loop is not detected");
     }
+    void firstElementOfLoop()
+    {
+        Node slow=head;
+        Node fast=head;
+        while(slow!=null && fast!=null && fast.next!=null)
+        {
+            slow=slow.next;
+            fast=fast.next.next;
+            if(slow==fast) {
+                System.out.println("Loop is detected");
+                break;
+            }
+        }
+        slow=head;
+        while(slow!=fast)
+        {
+            slow=slow.next;
+            fast=fast.next;
+        }
+        System.out.println("The first element of the loop is: "+slow.data);
+    }
+    boolean checkSorted()
+    {
+        Node temp=head;
+        while(temp!=null && temp.next!=null)
+        {
+            if(temp.data>temp.next.data) return false;
+            temp=temp.next;
+        }
+        return true;
+    }
 
 
 
@@ -234,8 +265,10 @@ public static void main(String[] args){
         System.out.println("13. Delete the middle element");
         System.out.println("14. Detect loop in the linked list");
         System.out.println("15. Delete the linked list");
+        System.out.println("16. First element of the loop using hare and tortoise algorithm");
+        System.out.println("17.Check sorted or not");
 
-        System.out.println("16. Exit");
+        System.out.println("18. Exit");
 
         choice = scanner.nextInt();
 
@@ -301,13 +334,24 @@ public static void main(String[] args){
                 System.out.println("Linked list is deleted");
                 break;
             case 16:
+                linkedList.firstElementOfLoop();
+                break;
+            case 17:
+                boolean sorted=linkedList.checkSorted();
+                if(sorted) System.out.println("The linked list is sorted");
+                else System.out.println("The linked list is not sorted");
+                break;
+
+
+            case 18:
                 System.out.println("Exiting the program.");
                 break;
+            
                 
             default:
                 System.out.println("Invalid choice. Please enter a valid option.");
         }
-    } while (choice != 16);
+    } while (choice != 18);
 
 
 
