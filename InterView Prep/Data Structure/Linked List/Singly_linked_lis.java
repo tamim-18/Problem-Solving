@@ -166,6 +166,50 @@ class LinkedList{
         System.out.println("Node deleted");
 
     }
+    void middleElement()
+    {
+        int len=length();
+        int middle=len/2;
+        if(head==null) {
+            System.out.println(" Middle can not be found");
+            return;
+        }
+
+        Node temp=head;
+        while(middle!=0)
+        {
+            temp=temp.next;
+            middle--;
+        }
+        System.out.println("The middle element is: "+temp.data);
+
+    }
+    void deleteMiddleElement()
+    {
+        int len=length();
+        int middle=len/2;
+        if(head==null) {
+            System.out.println(" Middle can not be found");
+            return;
+        }
+
+       deleteAnyPosition(middle);
+    }
+    void detectLoop()
+    {
+        Node slow=head;
+        Node fast=head;
+        while(slow!=null && fast!=null && fast.next!=null)
+        {
+            slow=slow.next;
+            fast=fast.next.next;
+            if(slow==fast) {
+                System.out.println("Loop is detected");
+                return;
+            }
+        }
+        System.out.println("Loop is not detected");
+    }
 
 
 
@@ -186,8 +230,11 @@ public static void main(String[] args){
         System.out.println("9. Delete from the beginning");
         System.out.println("10. Delete from the end");
         System.out.println("11. Delete fom any position");
+        System.out.println("12. Find the middle element");
+        System.out.println("13. Delete the middle element");
+        System.out.println("14. Detect loop in the linked list");
 
-        System.out.println("12. Exit");
+        System.out.println("15. Exit");
 
         choice = scanner.nextInt();
 
@@ -240,13 +287,22 @@ public static void main(String[] args){
                 linkedList.deleteAnyPosition(pos);
                 break;
             case 12:
+                linkedList.middleElement();
+                break;
+            case 13:
+                linkedList.deleteMiddleElement();
+                break;
+            case 14:
+                linkedList.detectLoop();
+                break;
+            case 15:
                 System.out.println("Exiting the program.");
                 break;
                 
             default:
                 System.out.println("Invalid choice. Please enter a valid option.");
         }
-    } while (choice != 12);
+    } while (choice != 14);
 
 
 
