@@ -233,8 +233,9 @@ public static void main(String[] args){
         System.out.println("12. Find the middle element");
         System.out.println("13. Delete the middle element");
         System.out.println("14. Detect loop in the linked list");
+        System.out.println("15. Delete the linked list");
 
-        System.out.println("15. Exit");
+        System.out.println("16. Exit");
 
         choice = scanner.nextInt();
 
@@ -296,13 +297,17 @@ public static void main(String[] args){
                 linkedList.detectLoop();
                 break;
             case 15:
+                linkedList.head=null;
+                System.out.println("Linked list is deleted");
+                break;
+            case 16:
                 System.out.println("Exiting the program.");
                 break;
                 
             default:
                 System.out.println("Invalid choice. Please enter a valid option.");
         }
-    } while (choice != 14);
+    } while (choice != 16);
 
 
 
