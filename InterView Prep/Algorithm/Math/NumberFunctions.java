@@ -28,6 +28,36 @@ class NumberFunctions{
         }
         return true;
     }
+    boolean isPalindrome(int number){
+        int reverse = 0;
+        int temp = number;
+        while(temp != 0){
+            reverse = reverse * 10 + temp % 10;
+            temp = temp / 10;
+        }
+        return reverse == number;
+    }
+    int factorial(int number){
+        if(number == 0){
+            return 1;
+        }
+        return number * factorial(number - 1);
+    }
+    int gcd(int a, int b){
+        if(b == 0){
+            return a;
+        }
+        return gcd(b, a % b);
+    }
+    int trailingZerosOfFactorial(int x){
+        int count=0;
+        while(x>=5){
+            count+=x/5;
+            x/=5;
+        }   
+        return count;
+    }
+
     
     
 
@@ -39,7 +69,12 @@ class NumberFunctions{
             System.out.println("\nChoose an option:");
             System.out.println("1. Count Digits");
             System.out.println("2. Primality Test");
-            System.out.println("3. Exit");
+            System.out.println("3. Palindrome Test");
+            System.out.println("4. Factorial");
+            System.out.println("5. GCD");
+            System.out.println("6. LCM");
+            System.out.println("7. Trailing Zeros of Factorial");
+            System.out.println("8. Exit");
             choice = scanner.nextInt();
 
             switch (choice) {
@@ -54,13 +89,45 @@ class NumberFunctions{
                     System.out.println("Is the number prime? "+numberFunctions.isPrime(number));
                     break;
                 case 3:
+                    System.out.println("Enter the number:");
+                    number = scanner.nextInt();
+                    //palindrome checking
+                    System.out.println("Is the number palindrome? "+numberFunctions.isPalindrome(number));
+                    break;
+                case 4:
+                    System.out.println("Enter the number:");
+                    number = scanner.nextInt();
+                    //factorial  
+                    System.out.println("Factorial of the number is: "+numberFunctions.factorial(number));             
+                    break;
+                case 5:
+                    System.out.println("Enter the two numbers:");
+                    int a = scanner.nextInt();
+                    int b = scanner.nextInt();
+                    //gcd
+                    System.out.println("GCD of the numbers is: "+numberFunctions.gcd(a, b));
+                    break;
+                case 6:
+                    System.out.println("Enter the two numbers:");
+                    a = scanner.nextInt();
+                    b = scanner.nextInt();
+                    //lcm
+                    System.out.println("LCM of the numbers is: "+(a * b) / numberFunctions.gcd(a, b));
+                    break;
+                case 7:
+                    System.out.println("Enter the number:");
+                    number = scanner.nextInt();
+                    //trailing zeros of factorial
+                    System.out.println("Trailing zeros of factorial of the number is: "+numberFunctions.trailingZerosOfFactorial(number));
+                    break;
+                case 8:
                     System.out.println("Exiting the program.");
                     break;
                 default:
                     System.out.println("Invalid choice. Please enter a valid option.");
             }
 
-        } while (choice != 3);
+        } while (choice != 8);
 
     }
 
