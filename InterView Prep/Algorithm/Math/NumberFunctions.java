@@ -197,7 +197,6 @@ class NumberFunctions{
             System.out.println("12. Sieve of Eratosthenes");
             System.out.println("13. Exit");
             choice = scanner.nextInt();
-
             switch (choice) {
                 case 1:
                     int digits=numberFunctions.countDigits();
@@ -284,7 +283,7 @@ class NumberFunctions{
                     System.out.println("Invalid choice. Please enter a valid option.");
             }
 
-        } while (choice != 12);
+        } while (choice != 14);
 
     }
 
