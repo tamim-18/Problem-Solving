@@ -58,35 +58,11 @@ double distance(ll x1,ll y1,ll x2,ll y2)
 
 void solution()
 {
-	ll n;
-	cin>>n;
-	vii v;
-	forn(i,n)
-	{
-		ll x,y;
-		cin>>x>>y;
-		v.pb({x,y});
-	}
-	ll mx=INT_MIN;
-	ll mn=INT_MAX;
-	for(auto u:v)
-	{
-		if(u.F==1) mx=max(mx,u.S);
-		else if(u.F==2) 
-		{
-			
-			mn=min(mn,u.S);
-			}
-	}
-	ll ans=mn-mx+1;
-	for(auto u:v)
-	{
-		if(u.F==3)
-		{
-			if(u.S>=mx and u.S<=mn) ans--;
-		} 
-	}
-	cout<<ans<<endl;
+	ll x,y;
+	cin>>x>>y;
+	ll diff=abs(x-y);
+	if(diff<=1) yes;
+	else no;
 	
 	
 } 
