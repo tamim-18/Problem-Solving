@@ -58,20 +58,18 @@ double distance(ll x1,ll y1,ll x2,ll y2)
 
 void solution()
 {
-	ll n;
-	cin>>n;
-	vi v(n);
+	
+	ll n,k;
+	cin>>n>>k;
+	int res=0;
+	vi v(k);
 	for(auto &x:v) cin>>x;
 	grtsrt(v);
-	ll ans=0,sum=0;
-	rep(i,1,n-1)
-	{
-		sum+=v[i];
+	for(int i=1;i<k;i++){
+		if(v[i]==1) res++;
+		else res+=(2*v[i]-1);
 	}
-	if(v[0]>sum) ans=2*v[0];
-	else ans=sum+v[0];
-	cout<<ans<<endl;
-	
+	cout<<res<<endl;
 	
 	
 	
@@ -80,7 +78,7 @@ void solution()
 int main()
 {
  
-   //test
+   test
    {
        solution();
    }
