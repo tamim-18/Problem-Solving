@@ -1,36 +1,32 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
-vector<long long> getSequence(long long n) {
-    vector<long long> sequence;
-    long long current = 1;
-
-    while (current <= n) {
-        sequence.push_back(current);
-        current = current << 1;
-    }
-
-    if (sequence.back() != n) {
-        sequence.push_back(n);
-    }
-
-    return sequence;
-}
-
 int main() {
+
+
     int t;
     cin >> t;
-    while (t--) {
-        long long n;
-        cin >> n;
 
-        vector<long long> sequence = getSequence(n);
-        cout << sequence.size() << endl;
-        for (long long num : sequence) {
-            cout << num << " ";
+    while (t--) {
+        long long n, x;
+        cin >> n >> x;
+
+        long long cnt = 0;
+
+        for (long long a = 1; a <= x; ++a) {
+            for (long long b = 1; b <= x; ++b) {
+                if (a + b + 1 > x) break;
+                long long ab = a * b;
+                if (ab > n) break;
+                long long c_max = min(x - a - b, (n - ab) / (a + b));
+                if (c_max >= 1) {
+                    cnt += c_max;
+                }
+            }
         }
-        cout << endl;
+
+        cout << cnt << endl;
     }
+
     return 0;
 }

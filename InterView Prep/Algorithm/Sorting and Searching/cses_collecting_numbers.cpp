@@ -58,12 +58,12 @@ double distance(ll x1,ll y1,ll x2,ll y2)
 
 void solution()
 {
-	ll x,y;
-	cin>>x>>y;
-	ll diff=abs(x-y);
-	if(diff<=1) yes;
-	else no;
-	
+	ll n;
+	cin>>n;
+	int res=n/4;
+	int rem=n%4;
+	res+=rem/2;
+	cout<<res<<endl;
 	
 } 
  
