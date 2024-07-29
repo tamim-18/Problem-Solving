@@ -1,32 +1,50 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main() {
-
-
+void solve() {
     int t;
     cin >> t;
-
     while (t--) {
-        long long n, x;
-        cin >> n >> x;
-
-        long long cnt = 0;
-
-        for (long long a = 1; a <= x; ++a) {
-            for (long long b = 1; b <= x; ++b) {
-                if (a + b + 1 > x) break;
-                long long ab = a * b;
-                if (ab > n) break;
-                long long c_max = min(x - a - b, (n - ab) / (a + b));
-                if (c_max >= 1) {
-                    cnt += c_max;
-                }
-            }
+        int n;
+        cin >> n;
+        vector<int> a(n);
+        for (int i = 0; i < n; ++i) {
+            cin >> a[i];
         }
-
-        cout << cnt << endl;
+        
+        if (all_of(a.begin(), a.end(), [](int x) { return x == 0; })) {
+            cout << 0 << endl;
+            continue;
+        }
+        
+        int steps = 0;
+        vector<int> operations;
+        
+        while (steps < 40 && !all_of(a.begin(), a.end(), [](int x) { return x == 0; })) {
+            sort(a.begin(), a.end());
+            int x = a[n / 2]; // Choose median
+            operations.push_back(x);
+            for (int i = 0; i < n; ++i) {
+                a[i] = abs(a[i] - x);
+            }
+            ++steps;
+        }
+        
+        if (steps == 40 && !all_of(a.begin(), a.end(), [](int x) { return x == 0; })) {
+            cout << -1 << endl;
+        } else {
+            cout << steps << endl;
+            for (int i = 0; i < steps; ++i) {
+                cout << operations[i] << " ";
+            }
+            cout << endl;
+        }
     }
+}
 
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    solve();
     return 0;
 }
